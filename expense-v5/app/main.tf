@@ -21,6 +21,7 @@ resource "null_resource" provisioner {
   provisioner "local-exec" {
     command = "sleep 120; cd /home/ec2-user/expense-ansible ; ansible-playbook -i ${aws_instance.node.private_ip}, -e ansible_user=ec2-user -e ansible_password=DevOps321 -e role_name=${var.name} -e env=dev expense.yml"
   }
+}
 
 
 
