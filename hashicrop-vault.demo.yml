@@ -1,0 +1,9 @@
+- name: Read secrets
+  hosts: localhost
+  tasks:
+    - name: Read a kv2 secret
+      ansible.builtin.debug:
+        msg: "{{ secrets.MYSQL_PASS }}"
+      vars:
+        secrets: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=expense-dev/data/backend token={{token}} url=https://vault-internal.poodevops.online:8200 validate_certs=false') }}"
+
