@@ -1,6 +1,6 @@
 module "app" {
   for_each = var.components
-  source   = "./app"
+  source   = "app"
 
   ami                    = data.aws_ami.ami.image_id
   instance_type          = each.value["instance_type"]
